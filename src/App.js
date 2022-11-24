@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { React, useState } from "react";
+import { Table } from "./Components/table";
+import { CurrentTime } from "./Components/Time";
+import { imgData } from "./Images/imgData";
+import { Modal } from "./Components/modal";
 
 function App() {
+  const [pic, setPic] = useState("");
+  const onCloseHandler = () => {
+    setPic("");
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CurrentTime />
+      <Table imgData={imgData} setActive={setPic} />
+      <Modal onclose={onCloseHandler} pic={pic} />
     </div>
   );
 }
